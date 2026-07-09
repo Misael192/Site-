@@ -193,7 +193,7 @@
             gap: 1.6rem;
         }
 
-        .menu a {
+        .menu a:not(.btn) {
             text-decoration: none;
             color: var(--branco);
             font-size: 0.78rem;
@@ -205,7 +205,7 @@
             transition: color 0.25s;
         }
 
-        .menu a::after {
+        .menu a:not(.btn)::after {
             content: "";
             position: absolute;
             left: 0;
@@ -216,8 +216,8 @@
             transition: width 0.3s;
         }
 
-        .menu a:hover { color: var(--ouro-claro); }
-        .menu a:hover::after { width: 100%; }
+        .menu a:not(.btn):hover { color: var(--ouro-claro); }
+        .menu a:not(.btn):hover::after { width: 100%; }
 
         .menu__cta { margin-left: 0.5rem; }
 
@@ -285,10 +285,10 @@
             align-items: center;
             padding: 10rem 0 6rem;
             background:
-                radial-gradient(ellipse at 78% 18%, rgba(201, 162, 39, 0.14), transparent 55%),
-                linear-gradient(180deg, rgba(5, 5, 6, 0.84) 0%, rgba(5, 5, 6, 0.66) 55%, var(--preto) 100%),
-                url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=70")
-                center / cover no-repeat;
+                linear-gradient(90deg, rgba(5, 5, 6, 0.93) 0%, rgba(5, 5, 6, 0.78) 45%, rgba(5, 5, 6, 0.45) 100%),
+                linear-gradient(180deg, rgba(5, 5, 6, 0.35) 0%, rgba(5, 5, 6, 0.15) 55%, var(--preto) 100%),
+                url("assets/img/hero-fundo.jpg")
+                center right / cover no-repeat;
         }
 
         .hero__conteudo {
@@ -1051,7 +1051,7 @@
             }
 
             .menu.aberto { transform: none; }
-            .menu a { font-size: 1.05rem; }
+            .menu a:not(.btn) { font-size: 0.95rem; }
             .menu-botao { display: block; z-index: 1200; }
             .menu__cta { margin: 0; }
 
@@ -1160,23 +1160,24 @@
                         <figcaption class="galeria__legenda"><span>01</span> Controle de Acesso</figcaption>
                     </figure>
                     <figure class="galeria__item revelar">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=70" alt="Ambiente de portaria corporativa de alto padrão" loading="lazy" width="800" height="600">
+                        <img src="assets/img/portaria.jpg" alt="Porteiro uniformizado da SR Facilities operando painel de acesso" loading="lazy" width="318" height="512" style="object-position: 50% 30%;">
                         <figcaption class="galeria__legenda"><span>02</span> Portaria</figcaption>
                     </figure>
                     <figure class="galeria__item revelar">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=70" alt="Profissional de recepção em atendimento corporativo" loading="lazy" width="800" height="600">
+                        <img src="assets/img/recepcao.jpg" alt="Recepcionista da SR Facilities em balcão com o escudo SR ao fundo" loading="lazy" width="470" height="490">
                         <figcaption class="galeria__legenda"><span>03</span> Recepção</figcaption>
                     </figure>
                     <figure class="galeria__item revelar">
-                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=70" alt="Profissional realizando limpeza técnica de ambiente" loading="lazy" width="800" height="600">
+                        <img src="assets/img/limpeza.jpg" alt="Profissional de limpeza da SR Facilities com carrinho em hall corporativo" loading="lazy" width="320" height="390" style="object-position: 50% 35%;">
                         <figcaption class="galeria__legenda"><span>04</span> Limpeza Profissional</figcaption>
                     </figure>
+                    <!-- Substituir por foto oficial de jardinagem quando disponível -->
                     <figure class="galeria__item revelar">
                         <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=70" alt="Profissional cuidando de jardim corporativo" loading="lazy" width="800" height="600">
                         <figcaption class="galeria__legenda"><span>05</span> Jardinagem</figcaption>
                     </figure>
                     <figure class="galeria__item revelar">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=70" alt="Equipe profissional uniformizada reunida" loading="lazy" width="800" height="600">
+                        <img src="assets/img/monitoramento.jpg" alt="Operador uniformizado da SR Facilities em central de monitoramento" loading="lazy" width="467" height="456">
                         <figcaption class="galeria__legenda"><span>06</span> Equipes Uniformizadas</figcaption>
                     </figure>
                 </div>
@@ -1529,11 +1530,11 @@
             <div class="container">
                 <p>&copy; 2026 SR Facilities &amp; Serviços LTDA. Todos os direitos reservados.</p>
                 <div>
-                    <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+                    <a href="politica-de-privacidade.html">Política de Privacidade</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="/termos-de-uso.html">Termos de Uso</a>
+                    <a href="termos-de-uso.html">Termos de Uso</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="/politica-de-privacidade.html">LGPD</a>
+                    <a href="politica-de-privacidade.html">LGPD</a>
                 </div>
             </div>
         </div>

@@ -1,298 +1,1444 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-behavior-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>SR Facilities | Terceirização Premium e Excelência Operacional</title>
     <meta name="description" content="Soluções de alto padrão em Controle de Acesso, Portaria, Limpeza, Jardinagem e Recepção na Grande São Paulo. Rigor jurídico, supervisão 24/7 e compliance total.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://srfacilities.com.br/">
 
-    <!-- Bootstrap 5.0.2 CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="crossorigin">
-    
-    <!-- Fontes Otimizadas -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="SR Facilities | Terceirização Premium e Excelência Operacional">
+    <meta property="og:description" content="Soluções de alto padrão em Controle de Acesso, Portaria, Limpeza, Jardinagem e Recepção na Grande São Paulo.">
+    <meta property="og:url" content="https://srfacilities.com.br/">
+    <meta name="theme-color" content="#050505">
+
+    <!-- Favicon: escudo SR -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 2 58 10v20c0 16-11 27-26 32C17 57 6 46 6 30V10Z' fill='%23090909' stroke='%23C9A227' stroke-width='4'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='22' font-weight='bold' fill='%23C9A227' text-anchor='middle'%3ESR%3C/text%3E%3C/svg%3E">
+
+    <!-- Fontes: Playfair Display (títulos) + Inter (textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Customizado da Marca (Abaixo do Bootstrap para sobrescrever variáveis) -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Dados estruturados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SR Facilities & Serviços LTDA",
+      "description": "Terceirização de serviços de Controle de Acesso, Portaria, Limpeza, Jardinagem e Recepção para condomínios e empresas.",
+      "url": "https://srfacilities.com.br/",
+      "telephone": "+55-11-91501-8800",
+      "email": "srfacilitiesservicos@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Takaharu Urano, 624 — Sala 5, Portal dos Ypês",
+        "addressLocality": "Cajamar",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "areaServed": "Grande São Paulo"
+    }
+    </script>
+
+    <style>
+        /* ==========================================================
+           SR FACILITIES — FOLHA DE ESTILOS PREMIUM
+           Identidade: preto, dourado, branco e grafite
+           ==========================================================
+
+           ÍNDICE
+           01. Variáveis e reset
+           02. Utilitários e acessibilidade
+           03. Cabeçalho (fixo + glassmorphism ao rolar)
+           04. Botões
+           05. Hero
+           06. Seções (base e títulos)
+           07. Galeria
+           08. Quem Somos
+           09. Cards de Serviços
+           10. Diferenciais
+           11. FAQ
+           12. Contato / Formulário
+           13. Rodapé
+           14. WhatsApp flutuante + balão
+           15. Animações de entrada (Intersection Observer)
+           16. Responsividade
+           ========================================================== */
+
+        /* ---------- 01. Variáveis e reset ---------- */
+        :root {
+            --preto: #050505;
+            --grafite: #14161b;
+            --grafite-claro: #1c1f26;
+            --ouro: #C9A227;
+            --ouro-claro: #E0BE62;
+            --ouro-escuro: #9A7A1C;
+            --branco: #FFFFFF;
+            --cinza-texto: #B9BDC7;
+            --cinza-suave: #8A8F9A;
+            --borda: rgba(255, 255, 255, 0.08);
+            --sombra-ouro: 0 10px 30px rgba(201, 162, 39, 0.25);
+            --transicao: 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --fonte-titulo: 'Playfair Display', Georgia, serif;
+            --fonte-texto: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--fonte-texto);
+            background: var(--preto);
+            color: var(--cinza-texto);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+        a { color: inherit; }
+
+        /* ---------- 02. Utilitários e acessibilidade ---------- */
+        .container {
+            width: min(1180px, 92%);
+            margin-inline: auto;
+        }
+
+        .pular-conteudo {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background: var(--ouro);
+            color: var(--preto);
+            padding: 0.8rem 1.4rem;
+            font-weight: 700;
+            z-index: 2000;
+            transition: top 0.2s;
+        }
+        .pular-conteudo:focus { top: 0; }
+
+        :focus-visible {
+            outline: 2px solid var(--ouro);
+            outline-offset: 3px;
+        }
+
+        /* ---------- 03. Cabeçalho ---------- */
+        .cabecalho {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            padding: 0.9rem 0;
+            background: linear-gradient(180deg, rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.35));
+            transition: padding var(--transicao), background var(--transicao),
+                        backdrop-filter var(--transicao), box-shadow var(--transicao);
+        }
+
+        /* Glassmorphism suave ao rolar */
+        .cabecalho--rolado {
+            padding: 0.35rem 0;
+            background: rgba(8, 9, 12, 0.72);
+            -webkit-backdrop-filter: blur(14px) saturate(150%);
+            backdrop-filter: blur(14px) saturate(150%);
+            border-bottom: 1px solid var(--borda);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .cabecalho__conteudo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .cabecalho__logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .cabecalho__logo img {
+            height: 80px;
+            width: auto;
+            transition: height .35s;
+        }
+
+        .cabecalho--rolado .cabecalho__logo img { height: 58px; }
+
+        .cabecalho__marca {
+            font-family: var(--fonte-titulo);
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.08em;
+            color: var(--branco);
+            white-space: nowrap;
+        }
+        .cabecalho__marca span { color: var(--ouro); }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--branco);
+            font-size: 0.86rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            position: relative;
+            padding: 0.3rem 0;
+            transition: color 0.25s;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ouro);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover { color: var(--ouro-claro); }
+        .menu a:hover::after { width: 100%; }
+
+        .menu__cta { margin-left: 0.5rem; }
+
+        .menu-botao {
+            display: none;
+            background: none;
+            border: 1px solid var(--borda);
+            color: var(--branco);
+            padding: 0.55rem 0.7rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* ---------- 04. Botões ---------- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.95rem 1.9rem;
+            font-family: var(--fonte-texto);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transicao), box-shadow var(--transicao),
+                        background var(--transicao), color var(--transicao);
+        }
+
+        /* Gradiente dourado refinado */
+        .btn--ouro {
+            background: linear-gradient(135deg, #EBD27A 0%, var(--ouro) 45%, var(--ouro-escuro) 100%);
+            color: #0d0d0d;
+            box-shadow: 0 6px 18px rgba(201, 162, 39, 0.22);
+        }
+
+        .btn--ouro:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--sombra-ouro);
+            background: linear-gradient(135deg, #F2DE93 0%, #D5AF35 45%, #A8861F 100%);
+        }
+
+        .btn--contorno {
+            background: transparent;
+            color: var(--branco);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn--contorno:hover {
+            transform: translateY(-3px);
+            border-color: var(--ouro);
+            color: var(--ouro-claro);
+            box-shadow: 0 6px 18px rgba(201, 162, 39, 0.15);
+        }
+
+        /* ---------- 05. Hero ---------- */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding: 9rem 0 5rem;
+            background:
+                linear-gradient(180deg, rgba(5, 5, 6, 0.82) 0%, rgba(5, 5, 6, 0.68) 55%, var(--preto) 100%),
+                url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=70")
+                center / cover no-repeat;
+        }
+
+        .hero__conteudo {
+            max-width: 780px;
+        }
+
+        .hero__selo {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ouro-claro);
+            border: 1px solid rgba(201, 162, 39, 0.35);
+            background: rgba(10, 10, 12, 0.55);
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            margin-bottom: 1.6rem;
+        }
+
+        .hero__titulo {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+            color: var(--branco);
+            margin-bottom: 1.4rem;
+        }
+
+        .hero__titulo span {
+            background: linear-gradient(120deg, #F0DA8B, var(--ouro) 60%, #B08B1E);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero__texto {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: var(--cinza-texto);
+            max-width: 640px;
+            margin-bottom: 1.6rem;
+        }
+
+        /* Frase institucional em destaque */
+        .hero__missao {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            line-height: 1.7;
+            color: var(--branco);
+            border-left: 3px solid var(--ouro);
+            padding-left: 1.2rem;
+            margin-bottom: 2.2rem;
+            font-style: italic;
+        }
+
+        .hero__acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* ---------- 06. Seções ---------- */
+        .secao {
+            padding: 5.5rem 0;
+            border-top: 1px solid var(--borda);
+        }
+
+        .secao--grafite { background: var(--grafite); }
+
+        .secao__cabecalho {
+            max-width: 720px;
+            margin: 0 auto 3.2rem;
+            text-align: center;
+        }
+
+        .secao__etiqueta {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ouro-claro);
+            margin-bottom: 0.8rem;
+        }
+
+        .secao__titulo {
+            font-family: var(--fonte-titulo);
+            font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+            line-height: 1.15;
+            letter-spacing: -0.015em;
+            font-weight: 700;
+            color: var(--branco);
+        }
+
+        .secao__descricao {
+            margin-top: 1rem;
+            font-weight: 300;
+            font-size: 0.98rem;
+            color: var(--cinza-suave);
+        }
+
+        .linha-ouro {
+            width: 64px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ouro), transparent);
+            margin: 1.1rem 0 1.6rem;
+        }
+
+        /* ---------- 07. Galeria ---------- */
+        .galeria__grade {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .galeria__item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+            background: var(--grafite-claro);
+            aspect-ratio: 4 / 3;
+        }
+
+        .galeria__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.85) contrast(1.05);
+            transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.6s;
+        }
+
+        .galeria__item:hover img {
+            transform: scale(1.06);
+            filter: saturate(1) contrast(1.05);
+        }
+
+        .galeria__legenda {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 2.2rem 1.1rem 0.9rem;
+            background: linear-gradient(180deg, transparent, rgba(5, 5, 5, 0.92));
+            color: var(--branco);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .galeria__legenda span {
+            color: var(--ouro-claro);
+            margin-right: 0.4rem;
+        }
+
+        /* ---------- 08. Quem Somos ---------- */
+        .sobre__grade {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .sobre__texto p {
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+        }
+
+        .sobre__texto strong { color: var(--branco); font-weight: 600; }
+
+        .pilar {
+            background: var(--preto);
+            border: 1px solid var(--borda);
+            padding: 1.5rem 1.6rem;
+            margin-bottom: 1rem;
+            transition: border-color var(--transicao), transform var(--transicao);
+        }
+
+        .pilar:hover {
+            border-color: rgba(201, 162, 39, 0.4);
+            transform: translateX(6px);
+        }
+
+        .pilar h3 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ouro-claro);
+            margin-bottom: 0.5rem;
+        }
+
+        .pilar p { font-size: 0.92rem; font-weight: 300; }
+
+        /* ---------- 09. Cards de Serviços ---------- */
+        .servicos__grade {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .card-servico {
+            position: relative;
+            background: var(--grafite-claro);
+            border: 1px solid var(--borda);
+            padding: 2.1rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transicao), box-shadow var(--transicao),
+                        border-color var(--transicao);
+        }
+
+        /* Brilho dourado sutil no topo do card */
+        .card-servico::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.65), transparent);
+            opacity: 0;
+            transition: opacity var(--transicao);
+        }
+
+        .card-servico:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 162, 39, 0.35);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.5), 0 0 26px rgba(201, 162, 39, 0.10);
+        }
+
+        .card-servico:hover::before { opacity: 1; }
+
+        .card-servico__icone {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(201, 162, 39, 0.35);
+            background: rgba(201, 162, 39, 0.07);
+            color: var(--ouro-claro);
+            margin-bottom: 1.4rem;
+            transition: transform var(--transicao), background var(--transicao);
+        }
+
+        .card-servico:hover .card-servico__icone {
+            transform: translateY(-4px) scale(1.06);
+            background: rgba(201, 162, 39, 0.14);
+        }
+
+        .card-servico__icone svg { width: 24px; height: 24px; }
+
+        .card-servico h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.35rem;
+            color: var(--branco);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-servico p {
+            font-size: 1rem;
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-servico ul {
+            margin-bottom: 1.6rem;
+        }
+
+        .card-servico li {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--cinza-suave);
+            padding-left: 1.4rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-servico li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--ouro);
+            font-weight: 700;
+        }
+
+        .card-servico__link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ouro-claro);
+            text-decoration: none;
+            transition: gap 0.3s, color 0.3s;
+        }
+
+        .card-servico__link:hover { gap: 0.9rem; color: var(--branco); }
+
+        /* ---------- 10. Diferenciais ---------- */
+        .diferenciais__grade {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .card-diferencial {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--borda);
+            padding: 1.9rem 1.7rem;
+            transition: transform var(--transicao), border-color var(--transicao),
+                        background var(--transicao);
+        }
+
+        .card-diferencial:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.35);
+            background: rgba(201, 162, 39, 0.04);
+        }
+
+        .card-diferencial__icone {
+            color: var(--ouro-claro);
+            margin-bottom: 1.1rem;
+            transition: transform var(--transicao);
+        }
+
+        .card-diferencial:hover .card-diferencial__icone { transform: scale(1.12); }
+
+        .card-diferencial__icone svg { width: 26px; height: 26px; }
+
+        .card-diferencial h3 {
+            font-family: var(--fonte-titulo);
+            font-size: 1.15rem;
+            color: var(--branco);
+            margin-bottom: 0.6rem;
+        }
+
+        .card-diferencial p { font-size: 0.92rem; font-weight: 300; }
+
+        /* ---------- 11. FAQ ---------- */
+        .faq { max-width: 820px; margin-inline: auto; }
+
+        .faq details {
+            background: var(--grafite-claro);
+            border: 1px solid var(--borda);
+            margin-bottom: 0.9rem;
+            transition: border-color var(--transicao);
+        }
+
+        .faq details[open] { border-color: rgba(201, 162, 39, 0.35); }
+
+        .faq summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.25rem 1.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--branco);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq summary::-webkit-details-marker { display: none; }
+
+        .faq summary::after {
+            content: "+";
+            color: var(--ouro);
+            font-size: 1.3rem;
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+
+        .faq details[open] summary::after { transform: rotate(45deg); }
+
+        .faq details p {
+            padding: 0 1.5rem 1.4rem;
+            font-size: 0.92rem;
+            font-weight: 300;
+        }
+
+        /* ---------- 12. Contato / Formulário ---------- */
+        .contato__grade {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contato__info p { font-weight: 300; margin-bottom: 1.4rem; }
+
+        .contato__dados {
+            border-top: 1px solid var(--borda);
+            padding-top: 1.6rem;
+        }
+
+        .contato__dados li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+            color: var(--cinza-texto);
+        }
+
+        .contato__dados svg {
+            width: 18px;
+            height: 18px;
+            color: var(--ouro-claro);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .contato__dados a { color: inherit; text-decoration: none; }
+        .contato__dados a:hover { color: var(--ouro-claro); }
+
+        .formulario {
+            background: var(--grafite-claro);
+            border: 1px solid var(--borda);
+            padding: 2.4rem;
+            position: relative;
+        }
+
+        .formulario__linha {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .formulario label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--cinza-suave);
+            margin-bottom: 0.45rem;
+        }
+
+        .formulario input[type="text"],
+        .formulario input[type="email"],
+        .formulario input[type="tel"],
+        .formulario select,
+        .formulario textarea {
+            width: 100%;
+            background: var(--preto);
+            border: 1px solid var(--borda);
+            color: var(--branco);
+            font-family: var(--fonte-texto);
+            font-size: 0.92rem;
+            padding: 0.8rem 0.9rem;
+            margin-bottom: 1.2rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .formulario input:focus,
+        .formulario select:focus,
+        .formulario textarea:focus {
+            outline: none;
+            border-color: var(--ouro);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+        }
+
+        .formulario__lgpd {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            background: var(--preto);
+            border: 1px solid var(--borda);
+            padding: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .formulario__lgpd input {
+            accent-color: var(--ouro);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .formulario__lgpd label {
+            margin: 0;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 300;
+            font-size: 0.8rem;
+            color: var(--cinza-suave);
+            line-height: 1.6;
+        }
+
+        .formulario__feedback {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: var(--grafite-claro);
+            z-index: 5;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .formulario__feedback.ativo { display: flex; }
+
+        .formulario__feedback h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--branco);
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .formulario__feedback p { font-weight: 300; font-size: 0.92rem; }
+
+        .formulario__feedback svg {
+            width: 44px;
+            height: 44px;
+            color: var(--ouro);
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- 13. Rodapé ---------- */
+        .rodape {
+            background: #030303;
+            border-top: 1px solid var(--borda);
+            padding: 4rem 0 0;
+            font-size: 0.9rem;
+        }
+
+        .rodape__grade {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 2.5rem;
+            padding-bottom: 3rem;
+        }
+
+        .rodape__marca {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .rodape__marca img { height: 56px; width: auto; }
+
+        .rodape__marca strong {
+            font-family: var(--fonte-titulo);
+            color: var(--branco);
+            font-size: 1.1rem;
+            letter-spacing: 0.06em;
+        }
+
+        .rodape__marca small {
+            display: block;
+            color: var(--ouro-claro);
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .rodape p { font-weight: 300; color: var(--cinza-suave); }
+
+        .rodape__sociais {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.4rem;
+        }
+
+        .rodape__sociais a {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--borda);
+            border-radius: 50%;
+            color: var(--cinza-texto);
+            transition: color var(--transicao), border-color var(--transicao), transform var(--transicao);
+        }
+
+        .rodape__sociais a:hover {
+            color: var(--ouro-claro);
+            border-color: rgba(201, 162, 39, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .rodape__sociais svg { width: 18px; height: 18px; }
+
+        .rodape h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--branco);
+            margin-bottom: 1.2rem;
+        }
+
+        .rodape__lista li { margin-bottom: 0.7rem; }
+
+        .rodape__lista a {
+            text-decoration: none;
+            color: var(--cinza-suave);
+            font-weight: 300;
+            transition: color 0.25s;
+        }
+
+        .rodape__lista a:hover { color: var(--ouro-claro); }
+
+        .rodape__dados li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            font-weight: 300;
+            color: var(--cinza-suave);
+        }
+
+        .rodape__dados svg {
+            width: 16px;
+            height: 16px;
+            color: var(--ouro-claro);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .rodape__legal {
+            border-top: 1px solid var(--borda);
+            padding: 1.4rem 0;
+        }
+
+        .rodape__legal .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            font-size: 0.78rem;
+            color: var(--cinza-suave);
+        }
+
+        .rodape__legal a {
+            color: var(--cinza-suave);
+            text-decoration: none;
+        }
+        .rodape__legal a:hover { color: var(--ouro-claro); }
+
+        /* ---------- 14. WhatsApp flutuante + balão ---------- */
+        .whatsapp {
+            position: fixed;
+            right: 1.4rem;
+            bottom: 1.4rem;
+            z-index: 1100;
+            display: flex;
+            align-items: flex-end;
+            gap: 0.8rem;
+        }
+
+        .whatsapp__botao {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #2AB540, #128C7E);
+            color: #fff;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+            transition: transform var(--transicao), box-shadow var(--transicao);
+        }
+
+        .whatsapp__botao:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 14px 30px rgba(18, 140, 126, 0.45);
+        }
+
+        .whatsapp__botao svg { width: 28px; height: 28px; }
+
+        .whatsapp__balao {
+            background: var(--branco);
+            color: #1a1a1a;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.8rem 2.2rem 0.8rem 1rem;
+            border-radius: 12px 12px 2px 12px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+            position: relative;
+            max-width: 240px;
+            opacity: 0;
+            transform: translateY(8px) scale(0.96);
+            pointer-events: none;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .whatsapp__balao.visivel {
+            opacity: 1;
+            transform: none;
+            pointer-events: auto;
+        }
+
+        .whatsapp__fechar {
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            line-height: 1;
+            color: #999;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ---------- 15. Animações de entrada ---------- */
+        .revelar {
+            opacity: 0;
+            transform: translateY(26px) scale(0.985);
+            transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .revelar--visivel {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .revelar { opacity: 1; transform: none; transition: none; }
+            *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
+        }
+
+        /* ---------- 16. Responsividade ---------- */
+        @media (max-width: 992px) {
+            .menu {
+                position: fixed;
+                inset: 0 0 0 auto;
+                width: min(320px, 82vw);
+                background: rgba(8, 9, 12, 0.97);
+                -webkit-backdrop-filter: blur(16px);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+                border-left: 1px solid var(--borda);
+            }
+
+            .menu.aberto { transform: none; }
+            .menu a { font-size: 1.05rem; }
+            .menu-botao { display: block; z-index: 1200; }
+            .menu__cta { margin: 0; }
+
+            .cabecalho__logo img { height: 62px; }
+            .cabecalho--rolado .cabecalho__logo img { height: 50px; }
+
+            .sobre__grade,
+            .contato__grade { grid-template-columns: 1fr; }
+
+            .servicos__grade,
+            .diferenciais__grade,
+            .galeria__grade { grid-template-columns: repeat(2, 1fr); }
+
+            .rodape__grade { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .secao { padding: 4rem 0; }
+
+            .servicos__grade,
+            .diferenciais__grade,
+            .galeria__grade,
+            .rodape__grade,
+            .formulario__linha { grid-template-columns: 1fr; }
+
+            .hero { padding-top: 7.5rem; }
+            .hero__acoes .btn { width: 100%; }
+
+            .formulario { padding: 1.6rem; }
+        }
+    </style>
 </head>
-<body class="bg-brand-black text-brand-light font-sans">
+<body>
 
-    <!-- ACESSIBILIDADE -->
-    <a href="#content" class="visually-hidden-focusable position-absolute top-0 start-0 p-3 bg-brand-gold text-brand-black z-index-master">Pular para o conteúdo principal</a>
+    <!-- Acessibilidade -->
+    <a href="#conteudo" class="pular-conteudo">Pular para o conteúdo principal</a>
 
-    <!-- NAVBAR (HEADER) -->
-    <header class="navbar navbar-expand-lg navbar-dark fixed-top backdrop-blur bg-brand-black-80 py-3 transition-all" id="sticky-header">
-        <div class="container px-4">
-            <a class="navbar-brand font-title fw-extrabold tracking-wider" href="#hero">
-                SR <span class="text-brand-gold">FACILITIES</span>
+    <!-- ============ CABEÇALHO ============ -->
+    <header class="cabecalho" id="cabecalho">
+        <div class="container cabecalho__conteudo">
+            <a href="#inicio" class="cabecalho__logo" aria-label="SR Facilities — Página inicial">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cpath d='M32 2 58 10v20c0 16-11 27-26 32C17 57 6 46 6 30V10Z' fill='%23090909' stroke='%23C9A227' stroke-width='3'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='22' font-weight='bold' fill='%23C9A227' text-anchor='middle'%3ESR%3C/text%3E%3C/svg%3E" alt="Escudo SR Facilities" width="64" height="64">
+                <span class="cabecalho__marca">SR <span>FACILITIES</span></span>
             </a>
-            
-            <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i data-lucide="menu" class="text-white"></i>
+
+            <button class="menu-botao" id="menu-botao" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
             </button>
-            
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#servicos">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#diferenciais">Diferenciais</a></li>
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#processo">Processo</a></li>
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#faq">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link text-white hover-gold text-sm font-medium" href="#contato">Contato</a></li>
-                </ul>
-                <div class="d-none d-lg-block">
-                    <a href="#contato" class="btn btn-outline-gold text-xs fw-bold text-uppercase tracking-widest rounded-0 px-4 py-2.5">
-                        Solicitar Orçamento
-                    </a>
-                </div>
-            </div>
+
+            <nav class="menu" id="menu" aria-label="Navegação principal">
+                <a href="#sobre">Quem Somos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contato">Contato</a>
+                <a href="#contato" class="btn btn--ouro menu__cta">Solicitar Orçamento</a>
+            </nav>
         </div>
     </header>
 
-    <main id="content">
-        <!-- HERO SECTION -->
-        <section id="hero" class="min-vh-screen d-flex align-items-center justify-content-center pt-5 bg-radial-gradient position-relative overflow-hidden">
-            <div class="absolute-bg opacity-10"></div>
-            
-            <div class="container position-relative z-index-2 py-5">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-7 text-center text-lg-start">
-                        <span class="badge bg-brand-gray border border-white-10 text-brand-gold text-uppercase tracking-widest px-3 py-2 rounded-pill mb-4 text-xs">
-                            <span class="spinner-grow spinner-grow-sm text-brand-gold me-2 vertical-align-middle" role="status"></span> Engenharia de Serviços Integrados
-                        </span>
-                        <h1 class="font-title fw-extrabold text-white tracking-tight lh-sm mb-4 display-5 display-md-4">
-                            Alta Performance em <br><span class="text-gradient-gold">Facilities Corporativo</span>
-                        </h1>
-                        <p class="text-neutral-400 fs-5 fw-light max-w-2xl mb-5 mx-auto mx-lg-0 leading-relaxed">
-                            A SR Facilities eleva o patamar operacional do seu patrimônio com processos validados, supervisão analítica contínua e total blindagem jurídica.
-                        </p>
-                        <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-                            <a href="#contato" class="btn btn-brand-gold fw-bold text-uppercase text-xs tracking-widest px-4 py-3 rounded-0 shadow-gold">
-                                Agendar Diagnóstico Técnico
-                            </a>
-                            <a href="#servicos" class="btn btn-outline-light border-white-20 hover-white fw-bold text-uppercase text-xs tracking-widest px-4 py-3 rounded-0">
-                                Conhecer Soluções
-                            </a>
-                        </div>
+    <main id="conteudo">
+
+        <!-- ============ HERO ============ -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero__conteudo">
+                    <span class="hero__selo">Engenharia de Serviços Integrados</span>
+
+                    <h1 class="hero__titulo">
+                        Alta Performance em <span>Facilities Corporativo</span>
+                    </h1>
+
+                    <p class="hero__texto">
+                        A SR Facilities eleva o patamar operacional do seu patrimônio com processos
+                        validados, supervisão analítica contínua e total blindagem jurídica.
+                    </p>
+
+                    <p class="hero__missao">
+                        Excelência em serviços terceirizados para condomínios e empresas.
+                        Qualidade, ética e compromisso em cada detalhe.
+                    </p>
+
+                    <div class="hero__acoes">
+                        <a href="#contato" class="btn btn--ouro">Solicitar Orçamento</a>
+                        <a href="https://wa.me/5511915018800?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20SR%20Facilities." target="_blank" rel="noopener" class="btn btn--contorno">
+                            Falar no WhatsApp
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
                     </div>
-                    <div class="col-lg-5 d-none d-lg-block">
-                        <div class="p-2 bg-brand-gray border border-white-10 rounded-0 shadow-lg">
-                            <img src="assets/img/hero-corporate.jpg" alt="Excelência operacional SR Facilities" class="img-fluid filter-grayscale-contrast h-480 w-100 object-cover" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALERIA ============ -->
+        <section id="galeria" class="secao secao--grafite">
+            <div class="container">
+                <div class="secao__cabecalho revelar">
+                    <span class="secao__etiqueta">Operação em Campo</span>
+                    <h2 class="secao__titulo">Presença Profissional em Cada Posto</h2>
+                    <p class="secao__descricao">Padrão visual, postura e uniformização que representam o seu patrimônio com a seriedade que ele exige.</p>
+                </div>
+
+                <div class="galeria__grade">
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=70" alt="Sistema de controle de acesso em ambiente corporativo" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>01</span> Controle de Acesso</figcaption>
+                    </figure>
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=70" alt="Ambiente de portaria corporativa de alto padrão" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>02</span> Portaria</figcaption>
+                    </figure>
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=70" alt="Profissional de recepção em atendimento corporativo" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>03</span> Recepção</figcaption>
+                    </figure>
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=70" alt="Profissional realizando limpeza técnica de ambiente" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>04</span> Limpeza Profissional</figcaption>
+                    </figure>
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=70" alt="Profissional cuidando de jardim corporativo" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>05</span> Jardinagem</figcaption>
+                    </figure>
+                    <figure class="galeria__item revelar">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=70" alt="Equipe profissional uniformizada reunida" loading="lazy" width="800" height="600">
+                        <figcaption class="galeria__legenda"><span>06</span> Equipes Uniformizadas</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ QUEM SOMOS ============ -->
+        <section id="sobre" class="secao">
+            <div class="container">
+                <div class="sobre__grade">
+                    <div class="sobre__texto revelar">
+                        <span class="secao__etiqueta">Institucional</span>
+                        <h2 class="secao__titulo">Cultura de Alto Padrão e Governança em Serviços</h2>
+                        <div class="linha-ouro"></div>
+                        <p>
+                            A <strong>SR Facilities &amp; Serviços LTDA</strong> atua com o firme propósito de entregar
+                            previsibilidade e excelência operacional absoluta para ativos imobiliários complexos.
+                            Pautados em uma arquitetura de compliance trabalhista rígido e auditoria permanente,
+                            garantimos estabilidade nas operações contratadas.
+                        </p>
+                        <p>
+                            Nossa abordagem baseia-se na personalização. Cada contrato é precedido por um estudo
+                            metodológico das necessidades e vulnerabilidades locais, estruturando soluções focadas
+                            em eficiência real e mitigação de riscos operacionais.
+                        </p>
+                    </div>
+
+                    <div class="revelar">
+                        <div class="pilar">
+                            <h3>Missão</h3>
+                            <p>Assegurar o perfeito funcionamento de infraestruturas corporativas e condominiais através de equipes qualificadas e monitoramento tático.</p>
+                        </div>
+                        <div class="pilar">
+                            <h3>Visão</h3>
+                            <p>Consolidar-se como a principal referência em governança, integridade legal e alto padrão na prestação de facilities na Grande São Paulo.</p>
+                        </div>
+                        <div class="pilar">
+                            <h3>Valores</h3>
+                            <p>Rigor em conformidade legal, transparência ativa, valorização do capital humano e precisão cronológica em cada posto.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SOBRE NÓS -->
-        <section id="sobre" class="py-5 bg-brand-dark border-top border-white-5">
-            <div class="container py-4">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6">
-                        <span class="text-xs fw-bold text-uppercase tracking-widest text-brand-gold d-block mb-2">Institucional</span>
-                        <h2 class="font-title fw-bold text-white tracking-tight mb-3 fs-2">Cultura de Alto Padrão e Governança em Serviços</h2>
-                        <div class="brand-line mb-4"></div>
-                        <p class="text-neutral-400 fw-light leading-relaxed mb-4">
-                            A <strong>SR Facilities & Serviços LTDA</strong> atua com o firme propósito de entregar previsibilidade e excelência operacional absoluta para ativos imobiliários complexos. Pautados em uma arquitetura de compliance trabalhista rígido e auditoria permanente, garantimos estabilidade nas operações contratadas.
-                        </p>
-                        <p class="text-neutral-400 fw-light leading-relaxed mb-0">
-                            Nossa abordagem baseia-se na personalização. Cada contrato é precedido por um estudo metodológico das necessidades e vulnerabilidades locais, estruturando soluções focadas em eficiência real e mitigação de riscos operacionais.
-                        </p>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row g-4">
-                            <div class="col-100">
-                                <div class="p-4 bg-brand-black border border-white-5 rounded-0">
-                                    <h3 class="font-title fw-semibold text-brand-gold text-uppercase text-xs tracking-widest mb-2">Missão</h3>
-                                    <p class="text-neutral-400 text-sm fw-light mb-0">Assegurar o perfeito funcionamento de infraestruturas corporativas e condominiais através de equipes qualificadas e monitoramento tático.</p>
-                                </div>
-                            </div>
-                            <div class="col-100">
-                                <div class="p-4 bg-brand-black border border-white-5 rounded-0">
-                                    <h3 class="font-title fw-semibold text-brand-gold text-uppercase text-xs tracking-widest mb-2">Visão</h3>
-                                    <p class="text-neutral-400 text-sm fw-light mb-0">Consolidar-se como a principal referência em governança, integridade legal e alto padrão na prestação de facilities na Grande São Paulo.</p>
-                                </div>
-                            </div>
-                            <div class="col-100">
-                                <div class="p-4 bg-brand-black border border-white-5 rounded-0">
-                                    <h3 class="font-title fw-semibold text-brand-gold text-uppercase text-xs tracking-widest mb-2">Valores</h3>
-                                    <p class="text-neutral-400 text-sm fw-light mb-0">Rigor em conformidade legal, transparência ativa, valorização do capital humano e precisão cronológica em cada posto.</p>
-                                </div>
-                            </div>
+        <!-- ============ SERVIÇOS ============ -->
+        <section id="servicos" class="secao secao--grafite">
+            <div class="container">
+                <div class="secao__cabecalho revelar">
+                    <span class="secao__etiqueta">Escopo Especializado</span>
+                    <h2 class="secao__titulo">Cinco Pilares Fundamentais de Atuação</h2>
+                    <p class="secao__descricao">Operamos exclusivamente em verticais onde detemos domínio técnico e metodologias maduras de supervisão.</p>
+                </div>
+
+                <div class="servicos__grade">
+                    <!-- Controle de Acesso -->
+                    <article class="card-servico revelar">
+                        <div class="card-servico__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
-                    </div>
+                        <h3>Controle de Acesso</h3>
+                        <p>Gestão analítica de fluxos de pedestres e veículos em ambientes corporativos e condominiais restritos.</p>
+                        <ul>
+                            <li>Triagem tecnológica rigorosa</li>
+                            <li>Protocolos de segurança auditados</li>
+                        </ul>
+                        <a href="#contato" data-servico="Controle de Acesso" class="card-servico__link">Solicitar Proposta <span aria-hidden="true">→</span></a>
+                    </article>
+
+                    <!-- Portaria -->
+                    <article class="card-servico revelar">
+                        <div class="card-servico__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+                        </div>
+                        <h3>Portaria</h3>
+                        <p>Atendimento presencial focado na preservação de diretrizes internas e monitoramento de perímetros.</p>
+                        <ul>
+                            <li>Escalas com 100% de cobertura</li>
+                            <li>Atendimento cordial e imponente</li>
+                        </ul>
+                        <a href="#contato" data-servico="Portaria" class="card-servico__link">Solicitar Proposta <span aria-hidden="true">→</span></a>
+                    </article>
+
+                    <!-- Limpeza Profissional -->
+                    <article class="card-servico revelar">
+                        <div class="card-servico__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+                        </div>
+                        <h3>Limpeza Profissional</h3>
+                        <p>Sanitização técnica de alta performance adaptada a indústrias e clínicas corporativas.</p>
+                        <ul>
+                            <li>Insumos de padrão institucional</li>
+                            <li>Cronogramas de higienização rígidos</li>
+                        </ul>
+                        <a href="#contato" data-servico="Limpeza Profissional" class="card-servico__link">Solicitar Proposta <span aria-hidden="true">→</span></a>
+                    </article>
+
+                    <!-- Jardinagem -->
+                    <article class="card-servico revelar">
+                        <div class="card-servico__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M12 20V10"/><path d="M12 10C12 5 8 3 4 3c0 5 3 7 8 7Z"/><path d="M12 13c0-4 3.5-6 8-6 0 4-2.5 6-8 6Z"/></svg>
+                        </div>
+                        <h3>Jardinagem</h3>
+                        <p>Manutenção paisagística contínua que preserva a estética e a valorização dos ambientes externos.</p>
+                        <ul>
+                            <li>Cronogramas sazonais de manejo</li>
+                            <li>Equipes com equipamentos próprios</li>
+                        </ul>
+                        <a href="#contato" data-servico="Jardinagem" class="card-servico__link">Solicitar Proposta <span aria-hidden="true">→</span></a>
+                    </article>
+
+                    <!-- Recepção -->
+                    <article class="card-servico revelar">
+                        <div class="card-servico__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>Recepção</h3>
+                        <p>Hospitalidade corporativa com postura executiva, representando a imagem da sua organização.</p>
+                        <ul>
+                            <li>Profissionais com perfil executivo</li>
+                            <li>Protocolos de atendimento padronizados</li>
+                        </ul>
+                        <a href="#contato" data-servico="Recepção" class="card-servico__link">Solicitar Proposta <span aria-hidden="true">→</span></a>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SERVIÇOS EXCLUSIVOS -->
-        <section id="servicos" class="py-5 bg-brand-black border-top border-white-5">
-            <div class="container py-4">
-                <div class="text-center max-w-3xl mx-auto mb-5">
-                    <span class="text-xs fw-bold text-uppercase tracking-widest text-brand-gold d-block mb-2">Escopo Especializado</span>
-                    <h2 class="font-title fw-bold text-white tracking-tight mb-2 fs-2">Cinco Pilares Fundamentais de Atuação</h2>
-                    <p class="text-neutral-400 fw-light text-sm mb-0">Operamos exclusivamente em verticais onde detemos domínio técnico e metodologias maduras de supervisão.</p>
+        <!-- ============ DIFERENCIAIS ============ -->
+        <section id="diferenciais" class="secao">
+            <div class="container">
+                <div class="secao__cabecalho revelar">
+                    <span class="secao__etiqueta">Diferenciais</span>
+                    <h2 class="secao__titulo">Por Que Escolher a SR Facilities?</h2>
+                    <p class="secao__descricao">Nosso compromisso vai além da prestação de serviços. Entregamos confiança, excelência e tranquilidade.</p>
                 </div>
 
-                <div class="row g-4 justify-content-center">
-                    <!-- Card Controle de Acesso -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 bg-brand-dark border-white-5 rounded-0 p-4 group-service-card d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="brand-icon-box mb-4"><i data-lucide="shield-check"></i></div>
-                                <h3 class="font-title fw-bold fs-5 text-white mb-3">Controle de Acesso</h3>
-                                <p class="text-neutral-400 text-sm fw-light mb-4">Gestão analítica de fluxos de pedestres e veículos em ambientes corporativos e condominiais restritos.</p>
-                                <ul class="list-unstyled text-neutral-400 text-xs fw-light m-0 space-y-2">
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Triagem tecnológica rigorosa</li>
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Protocolos de segurança auditados</li>
-                                </ul>
-                            </div>
-                            <a href="#contato" data-service="Controle de Acesso" class="btn-select-service mt-4 d-flex align-items-center justify-content-between text-xs fw-bold text-uppercase tracking-widest text-brand-gold text-decoration-none">Solicitar Proposta <i data-lucide="arrow-right" class="arrow-icon"></i></a>
+                <div class="diferenciais__grade">
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                         </div>
-                    </div>
+                        <h3>Atendimento Personalizado</h3>
+                        <p>Cada cliente é único. Desenhamos soluções sob medida para sua real necessidade.</p>
+                    </article>
 
-                    <!-- Card Portaria -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 bg-brand-dark border-white-5 rounded-0 p-4 group-service-card d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="brand-icon-box mb-4"><i data-lucide="key"></i></div>
-                                <h3 class="font-title fw-bold fs-5 text-white mb-3">Portaria</h3>
-                                <p class="text-neutral-400 text-sm fw-light mb-4">Atendimento presencial focado na preservação de diretrizes internas e monitoramento de perímetros.</p>
-                                <ul class="list-unstyled text-neutral-400 text-xs fw-light m-0 space-y-2">
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Escalas com 100% de cobertura</li>
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Atendimento cordial e imponente</li>
-                                </ul>
-                            </div>
-                            <a href="#contato" data-service="Portaria" class="btn-select-service mt-4 d-flex align-items-center justify-content-between text-xs fw-bold text-uppercase tracking-widest text-brand-gold text-decoration-none">Solicitar Proposta <i data-lucide="arrow-right" class="arrow-icon"></i></a>
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         </div>
-                    </div>
+                        <h3>Profissionais Capacitados</h3>
+                        <p>Equipe rigorosamente selecionada e em constante treinamento e atualização.</p>
+                    </article>
 
-                    <!-- Card Limpeza Profissional -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 bg-brand-dark border-white-5 rounded-0 p-4 group-service-card d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="brand-icon-box mb-4"><i data-lucide="sparkles"></i></div>
-                                <h3 class="font-title fw-bold fs-5 text-white mb-3">Limpeza Profissional</h3>
-                                <p class="text-neutral-400 text-sm fw-light mb-4">Sanitização técnica de alta performance adaptada a indústrias e clínicas corporativas.</p>
-                                <ul class="list-unstyled text-neutral-400 text-xs fw-light m-0 space-y-2">
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Insumos de padrão institucional</li>
-                                    <li><i data-lucide="check" class="text-brand-gold me-2 w-4"></i> Cronogramas de higienização rígidos</li>
-                                </ul>
-                            </div>
-                            <a href="#contato" data-service="Limpeza Profissional" class="btn-select-service mt-4 d-flex align-items-center justify-content-between text-xs fw-bold text-uppercase tracking-widest text-brand-gold text-decoration-none">Solicitar Proposta <i data-lucide="arrow-right" class="arrow-icon"></i></a>
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <h3>Supervisão Constante</h3>
+                        <p>Acompanhamento contínuo de todas as operações para garantir o padrão contratado.</p>
+                    </article>
 
-        <!-- ACCORDION FAQ (Usando Componente Nativo do Bootstrap 5) -->
-        <section id="faq" class="py-5 bg-brand-black border-top border-white-5">
-            <div class="container py-4 max-w-4xl">
-                <div class="text-center mb-5">
-                    <span class="text-xs fw-bold text-uppercase tracking-widest text-brand-gold d-block mb-2">Esclarecimentos</span>
-                    <h2 class="font-title fw-bold text-white tracking-tight fs-2">Perguntas Frequentes</h2>
-                </div>
-                
-                <div class="accordion accordion-flush" id="accordionFaq">
-                    <div class="accordion-item bg-brand-dark border border-white-5 mb-3 rounded-0">
-                        <h3 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed bg-brand-dark text-white font-medium focus-none text-sm shadow-none py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Como funciona o processo de contratação da SR Facilities?
-                            </button>
-                        </h3>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
-                            <div class="accordion-body text-neutral-400 text-sm fw-light pt-0 pb-4 leading-relaxed">
-                                O processo inicia-se com o envio dos dados no formulário abaixo ou contato via WhatsApp. Agendamos um diagnóstico técnico no local para compreender as particularidades operacionais e, em seguida, apresentamos uma proposta sob medida em até 48 horas.
-                            </div>
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
                         </div>
-                    </div>
+                        <h3>Compliance Trabalhista</h3>
+                        <p>Rigor jurídico absoluto e auditoria permanente que blindam o contratante de passivos.</p>
+                    </article>
 
-                    <div class="accordion-item bg-brand-dark border border-white-5 mb-3 rounded-0">
-                        <h3 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed bg-brand-dark text-white font-medium focus-none text-sm shadow-none py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Como ocorre a cobertura de faltas ou licenças dos profissionais?
-                            </button>
-                        </h3>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFaq">
-                            <div class="accordion-body text-neutral-400 text-sm fw-light pt-0 pb-4 leading-relaxed">
-                                Mantemos uma Reserva Técnica permanente e estruturada de profissionais já integrados à cultura corporativa da SR Facilities. Em caso de ausências previstas ou imprevistas, o acionamento é imediato, sem gerar qualquer interrupção do serviço ou custos extras ao contratante.
-                            </div>
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
-                    </div>
+                        <h3>Reserva Técnica Imediata</h3>
+                        <p>Cobertura instantânea de ausências, sem interrupção do serviço e sem custos extras.</p>
+                    </article>
+
+                    <article class="card-diferencial revelar">
+                        <div class="card-diferencial__icone" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                        </div>
+                        <h3>Gestão Orientada a Dados</h3>
+                        <p>Relatórios executivos e indicadores que dão previsibilidade total à operação.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- FORMULÁRIO DE CONTATO (Bootstrap Grid) -->
-        <section id="contato" class="py-5 bg-brand-dark border-top border-white-5">
-            <div class="container py-4">
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <span class="text-xs fw-bold text-uppercase tracking-widest text-brand-gold d-block mb-2">Canais de Atendimento</span>
-                        <h2 class="font-title fw-bold text-white tracking-tight fs-2 mb-4">Inicie uma Operação de Alto Padrão</h2>
-                        <p class="text-neutral-400 fw-light leading-relaxed mb-4">
-                            Preencha os campos ao lado para direcionar sua demanda ao nosso comitê técnico comercial. Garantimos retorno executivo ágil e qualificado.
-                        </p>
-                        <div class="pt-4 border-top border-white-10 text-neutral-300 space-y-3">
-                            <p class="d-flex align-items-center gap-3 text-sm"><i data-lucide="phone" class="text-brand-gold w-5"></i> (11) 91501-8800</p>
-                            <p class="d-flex align-items-center gap-3 text-sm"><i data-lucide="mail" class="text-brand-gold w-5"></i> srfacilitiesservicos@gmail.com</p>
-                            <p class="d-flex align-items-start gap-3 text-sm"><i data-lucide="map-pin" class="text-brand-gold w-5 mt-1"></i> Rua Takaharu Urano, 624 — Sala 5<br>Portal dos Ypês, Cajamar/SP</p>
-                        </div>
+        <!-- ============ FAQ ============ -->
+        <section id="faq" class="secao secao--grafite">
+            <div class="container">
+                <div class="secao__cabecalho revelar">
+                    <span class="secao__etiqueta">Esclarecimentos</span>
+                    <h2 class="secao__titulo">Perguntas Frequentes</h2>
+                </div>
+
+                <div class="faq revelar">
+                    <details>
+                        <summary>Como funciona o processo de contratação da SR Facilities?</summary>
+                        <p>O processo inicia-se com o envio dos dados no formulário abaixo ou contato via WhatsApp. Agendamos um diagnóstico técnico no local para compreender as particularidades operacionais e, em seguida, apresentamos uma proposta sob medida em até 48 horas.</p>
+                    </details>
+
+                    <details>
+                        <summary>Como ocorre a cobertura de faltas ou licenças dos profissionais?</summary>
+                        <p>Mantemos uma Reserva Técnica permanente e estruturada de profissionais já integrados à cultura corporativa da SR Facilities. Em caso de ausências previstas ou imprevistas, o acionamento é imediato, sem gerar qualquer interrupção do serviço ou custos extras ao contratante.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTATO ============ -->
+        <section id="contato" class="secao">
+            <div class="container">
+                <div class="contato__grade">
+                    <div class="contato__info revelar">
+                        <span class="secao__etiqueta">Canais de Atendimento</span>
+                        <h2 class="secao__titulo">Inicie uma Operação de Alto Padrão</h2>
+                        <div class="linha-ouro"></div>
+                        <p>Preencha os campos ao lado para direcionar sua demanda ao nosso comitê técnico comercial. Garantimos retorno executivo ágil e qualificado.</p>
+
+                        <ul class="contato__dados">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <a href="tel:+5511915018800">(11) 91501-8800</a>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <a href="mailto:srfacilitiesservicos@gmail.com">srfacilitiesservicos@gmail.com</a>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span>Rua Takaharu Urano, 624 — Sala 5<br>Portal dos Ypês, Cajamar/SP</span>
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                <span>Segunda a sexta, das 08h às 18h</span>
+                            </li>
+                        </ul>
                     </div>
-                    
-                    <div class="col-lg-7">
-                        <div class="p-4 p-md-5 bg-brand-black border border-white-5 rounded-0 position-relative">
-                            <form id="lead-form" novalidate>
-                                <div class="row g-3 mb-3">
-                                    <div class="col-sm-6">
-                                        <label for="nome" class="form-label text-xs font-medium text-uppercase text-neutral-400 tracking-wider">Nome Completo</label>
-                                        <input type="text" id="nome" name="nome" required class="form-control bg-brand-dark border-white-10 text-white text-sm rounded-0 py-2.5 focus-gold">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label for="empresa" class="form-label text-xs font-medium text-uppercase text-neutral-400 tracking-wider">Empresa / Condomínio</label>
-                                        <input type="text" id="empresa" name="empresa" required class="form-control bg-brand-dark border-white-10 text-white text-sm rounded-0 py-2.5 focus-gold">
-                                    </div>
-                                </div>
 
-                                <div class="mb-3">
-                                    <label for="servico" class="form-label text-xs font-medium text-uppercase text-neutral-400 tracking-wider">Serviço Principal</label>
-                                    <select id="servico" name="servico" required class="form-select bg-brand-dark border-white-10 text-white text-sm rounded-0 py-2.5 focus-gold">
-                                        <option value="">Selecione uma especialidade...</option>
-                                        <option value="Controle de Acesso">Controle de Acesso</option>
-                                        <option value="Portaria">Portaria</option>
-                                        <option value="Limpeza Profissional">Limpeza Profissional</option>
-                                    </select>
+                    <div class="formulario revelar">
+                        <form id="formulario-lead" novalidate>
+                            <div class="formulario__linha">
+                                <div>
+                                    <label for="nome">Nome Completo</label>
+                                    <input type="text" id="nome" name="nome" autocomplete="name" required>
                                 </div>
-
-                                <div class="mb-4">
-                                    <label for="mensagem" class="form-label text-xs font-medium text-uppercase text-neutral-400 tracking-wider">Particularidades</label>
-                                    <textarea id="mensagem" name="mensagem" rows="4" required class="form-control bg-brand-dark border-white-10 text-white text-sm rounded-0 py-2.5 focus-gold"></textarea>
+                                <div>
+                                    <label for="empresa">Empresa / Condomínio</label>
+                                    <input type="text" id="empresa" name="empresa" autocomplete="organization" required>
                                 </div>
-
-                                <div class="p-3 bg-brand-dark border border-white-5 mb-4 d-flex align-items-start gap-3">
-                                    <input type="checkbox" id="lgpd" name="lgpd" required class="form-check-input accent-gold border-white-20 rounded-0 mt-1 flex-shrink-0">
-                                    <label for="lgpd" class="text-xs text-neutral-400 leading-relaxed m-0 user-select-none">
-                                        Autorizo o tratamento dos dados informados estritamente para contato comercial, em conformidade com a LGPD.
-                                    </label>
-                                </div>
-
-                                <button type="submit" class="btn btn-brand-gold w-100 fw-bold text-uppercase text-xs tracking-widest py-3 rounded-0">
-                                    Enviar Solicitação Corporativa
-                                </button>
-                            </form>
-                            
-                            <!-- Feedback de Envio -->
-                            <div id="form-feedback" class="d-none position-absolute top-0 start-0 w-100 h-100 bg-brand-black d-flex flex-column align-items-center justify-content-center text-center p-4 z-index-top">
-                                <div id="feedback-icon" class="mb-3"></div>
-                                <h3 id="feedback-title" class="font-title fw-bold fs-5 text-white m-0"></h3>
-                                <p id="feedback-desc" class="text-neutral-400 text-sm fw-light mt-2 max-w-sm"></p>
                             </div>
+
+                            <label for="servico">Serviço Principal</label>
+                            <select id="servico" name="servico" required>
+                                <option value="">Selecione uma especialidade...</option>
+                                <option value="Controle de Acesso">Controle de Acesso</option>
+                                <option value="Portaria">Portaria</option>
+                                <option value="Limpeza Profissional">Limpeza Profissional</option>
+                                <option value="Jardinagem">Jardinagem</option>
+                                <option value="Recepção">Recepção</option>
+                            </select>
+
+                            <label for="mensagem">Particularidades</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+                            <div class="formulario__lgpd">
+                                <input type="checkbox" id="lgpd" name="lgpd" required>
+                                <label for="lgpd">Autorizo o tratamento dos dados informados estritamente para contato comercial, em conformidade com a LGPD.</label>
+                            </div>
+
+                            <button type="submit" class="btn btn--ouro" style="width:100%">Enviar Solicitação Corporativa</button>
+                        </form>
+
+                        <div class="formulario__feedback" id="formulario-feedback" role="status">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <h3>Solicitação encaminhada</h3>
+                            <p>Sua demanda foi direcionada ao WhatsApp do nosso comitê técnico. Retornaremos em breve.</p>
                         </div>
                     </div>
                 </div>
@@ -300,21 +1446,209 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-brand-black border-top border-white-5 text-neutral-500 py-4 text-xs">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-            <p class="m-0 font-title fw-bold text-white text-sm">SR FACILITIES</p>
-            <div class="d-flex gap-4">
-                <a href="/politica-de-privacidade.html" class="text-neutral-500 text-decoration-none hover-gold">Privacidade</a>
-                <a href="/termos-de-uso.html" class="text-neutral-500 text-decoration-none hover-gold">Termos</a>
+    <!-- ============ RODAPÉ ============ -->
+    <footer class="rodape">
+        <div class="container rodape__grade">
+            <div>
+                <div class="rodape__marca">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='64' height='64'%3E%3Cpath d='M32 2 58 10v20c0 16-11 27-26 32C17 57 6 46 6 30V10Z' fill='%23090909' stroke='%23C9A227' stroke-width='3'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='22' font-weight='bold' fill='%23C9A227' text-anchor='middle'%3ESR%3C/text%3E%3C/svg%3E" alt="Escudo SR Facilities" width="64" height="64">
+                    <div>
+                        <strong>SR Facilities</strong>
+                        <small>Facilities &amp; Serviços</small>
+                    </div>
+                </div>
+                <p>Excelência em serviços terceirizados para condomínios e empresas. Qualidade, ética e compromisso em cada detalhe.</p>
+
+                <!-- Redes sociais: atualizar os links quando os perfis estiverem disponíveis -->
+                <div class="rodape__sociais">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram da SR Facilities">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn da SR Facilities">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook da SR Facilities">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
             </div>
-            <p class="m-0 font-light">&copy; 2026 SR Facilities. Todos os direitos reservados.</p>
+
+            <div>
+                <h4>Links Rápidos</h4>
+                <ul class="rodape__lista">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Informações</h4>
+                <ul class="rodape__dados">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+                        <span>SR Facilities &amp; Serviços LTDA<br><!-- Substituir pelo CNPJ oficial -->CNPJ: 00.000.000/0001-00</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Rua Takaharu Urano, 624 — Sala 5<br>Portal dos Ypês, Cajamar/SP</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span>Segunda a sexta<br>das 08h às 18h</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>(11) 91501-8800</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rodape__legal">
+            <div class="container">
+                <p>&copy; 2026 SR Facilities &amp; Serviços LTDA. Todos os direitos reservados.</p>
+                <div>
+                    <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="/termos-de-uso.html">Termos de Uso</a>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="/politica-de-privacidade.html">LGPD</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 Bundle com Popper CDN (Essencial para funcionamento do Accordion/Navbar) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="crossorigin"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="assets/js/script.js"></script>
+    <!-- ============ WHATSAPP FLUTUANTE ============ -->
+    <div class="whatsapp">
+        <div class="whatsapp__balao" id="whatsapp-balao" role="status">
+            <button class="whatsapp__fechar" id="whatsapp-fechar" aria-label="Fechar mensagem">&times;</button>
+            💬 Solicite seu orçamento pelo WhatsApp
+        </div>
+        <a href="https://wa.me/5511915018800?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20SR%20Facilities."
+           target="_blank" rel="noopener" class="whatsapp__botao" aria-label="Conversar pelo WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 14.96c0 2.63.87 5.07 2.34 7.05L4.8 27.2l5.36-1.5a12.1 12.1 0 0 0 5.88 1.5c6.63 0 12.03-5.37 12.03-11.97C28.07 8.36 22.67 3 16.04 3zm0 21.84c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-3.18.89.9-3.07-.25-.4a9.77 9.77 0 0 1-1.55-5.3c0-5.42 4.45-9.83 9.9-9.83 5.44 0 9.87 4.4 9.87 9.83 0 5.42-4.43 9.83-9.87 9.83zm5.42-7.36c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.15-.17.2-.34.22-.64.08-.3-.15-1.25-.46-2.39-1.47a8.9 8.9 0 0 1-1.65-2.04c-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.66-1.58-.9-2.16-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46 0 1.45 1.06 2.85 1.21 3.05.15.2 2.09 3.18 5.06 4.46.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.58-.35z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        /* ==========================================================
+           SR FACILITIES — SCRIPTS
+           01. Cabeçalho ao rolar
+           02. Menu mobile
+           03. Animações de entrada (Intersection Observer)
+           04. Balão do WhatsApp
+           05. Pré-seleção de serviço nos cards
+           06. Formulário (validação + envio via WhatsApp)
+           ========================================================== */
+        (function () {
+            'use strict';
+
+            /* ---------- 01. Cabeçalho ao rolar ---------- */
+            var cabecalho = document.getElementById('cabecalho');
+            var aoRolar = function () {
+                cabecalho.classList.toggle('cabecalho--rolado', window.scrollY > 40);
+            };
+            window.addEventListener('scroll', aoRolar, { passive: true });
+            aoRolar();
+
+            /* ---------- 02. Menu mobile ---------- */
+            var botaoMenu = document.getElementById('menu-botao');
+            var menu = document.getElementById('menu');
+
+            botaoMenu.addEventListener('click', function () {
+                var aberto = menu.classList.toggle('aberto');
+                botaoMenu.setAttribute('aria-expanded', String(aberto));
+                botaoMenu.setAttribute('aria-label', aberto ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+            });
+
+            menu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    menu.classList.remove('aberto');
+                    botaoMenu.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            /* ---------- 03. Animações de entrada ---------- */
+            var reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var elementos = document.querySelectorAll('.revelar');
+
+            if (!reduzMovimento && 'IntersectionObserver' in window) {
+                var observador = new IntersectionObserver(function (entradas) {
+                    entradas.forEach(function (entrada) {
+                        if (entrada.isIntersecting) {
+                            entrada.target.classList.add('revelar--visivel');
+                            observador.unobserve(entrada.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+                elementos.forEach(function (el, i) {
+                    el.style.transitionDelay = (i % 3) * 0.08 + 's';
+                    observador.observe(el);
+                });
+            } else {
+                elementos.forEach(function (el) { el.classList.add('revelar--visivel'); });
+            }
+
+            /* ---------- 04. Balão do WhatsApp ---------- */
+            var balao = document.getElementById('whatsapp-balao');
+            var fecharBalao = document.getElementById('whatsapp-fechar');
+            var temporizadorBalao;
+
+            setTimeout(function () {
+                balao.classList.add('visivel');
+                temporizadorBalao = setTimeout(function () {
+                    balao.classList.remove('visivel');
+                }, 8000);
+            }, 3500);
+
+            fecharBalao.addEventListener('click', function () {
+                clearTimeout(temporizadorBalao);
+                balao.classList.remove('visivel');
+            });
+
+            /* ---------- 05. Pré-seleção de serviço nos cards ---------- */
+            var seletorServico = document.getElementById('servico');
+            document.querySelectorAll('[data-servico]').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    seletorServico.value = link.getAttribute('data-servico');
+                });
+            });
+
+            /* ---------- 06. Formulário ---------- */
+            var formulario = document.getElementById('formulario-lead');
+            var feedback = document.getElementById('formulario-feedback');
+
+            formulario.addEventListener('submit', function (evento) {
+                evento.preventDefault();
+
+                if (!formulario.checkValidity()) {
+                    formulario.reportValidity();
+                    return;
+                }
+
+                var dados = new FormData(formulario);
+                var mensagem =
+                    'Olá! Gostaria de solicitar uma proposta com a SR Facilities.%0A%0A' +
+                    '*Nome:* ' + encodeURIComponent(dados.get('nome')) + '%0A' +
+                    '*Empresa/Condomínio:* ' + encodeURIComponent(dados.get('empresa')) + '%0A' +
+                    '*Serviço:* ' + encodeURIComponent(dados.get('servico')) + '%0A' +
+                    '*Particularidades:* ' + encodeURIComponent(dados.get('mensagem'));
+
+                window.open('https://wa.me/5511915018800?text=' + mensagem, '_blank', 'noopener');
+
+                feedback.classList.add('ativo');
+                formulario.reset();
+
+                setTimeout(function () {
+                    feedback.classList.remove('ativo');
+                }, 6000);
+            });
+        })();
+    </script>
 </body>
 </html>

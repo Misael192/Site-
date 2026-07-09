@@ -84,7 +84,9 @@
             --branco: #FFFFFF;
             --cinza-texto: #B9BDC7;
             --cinza-suave: #8A8F9A;
-            --borda: rgba(255, 255, 255, 0.08);
+            --borda: rgba(255, 255, 255, 0.07);
+            --raio: 16px;
+            --raio-suave: 10px;
             --sombra-ouro: 0 10px 30px rgba(201, 162, 39, 0.25);
             --transicao: 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
             --fonte-titulo: 'Playfair Display', Georgia, serif;
@@ -194,9 +196,10 @@
         .menu a {
             text-decoration: none;
             color: var(--branco);
-            font-size: 0.86rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             position: relative;
             padding: 0.3rem 0;
             transition: color 0.25s;
@@ -242,6 +245,7 @@
             text-transform: uppercase;
             text-decoration: none;
             border: none;
+            border-radius: 12px;
             cursor: pointer;
             transition: transform var(--transicao), box-shadow var(--transicao),
                         background var(--transicao), color var(--transicao);
@@ -279,9 +283,10 @@
             min-height: 100svh;
             display: flex;
             align-items: center;
-            padding: 9rem 0 5rem;
+            padding: 10rem 0 6rem;
             background:
-                linear-gradient(180deg, rgba(5, 5, 6, 0.82) 0%, rgba(5, 5, 6, 0.68) 55%, var(--preto) 100%),
+                radial-gradient(ellipse at 78% 18%, rgba(201, 162, 39, 0.14), transparent 55%),
+                linear-gradient(180deg, rgba(5, 5, 6, 0.84) 0%, rgba(5, 5, 6, 0.66) 55%, var(--preto) 100%),
                 url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=70")
                 center / cover no-repeat;
         }
@@ -301,7 +306,7 @@
             background: rgba(10, 10, 12, 0.55);
             padding: 0.5rem 1.1rem;
             border-radius: 999px;
-            margin-bottom: 1.6rem;
+            margin-bottom: 2rem;
         }
 
         .hero__titulo {
@@ -311,7 +316,7 @@
             letter-spacing: -0.02em;
             font-weight: 700;
             color: var(--branco);
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.8rem;
         }
 
         .hero__titulo span {
@@ -327,7 +332,7 @@
             font-weight: 300;
             color: var(--cinza-texto);
             max-width: 640px;
-            margin-bottom: 1.6rem;
+            margin-bottom: 2rem;
         }
 
         /* Frase institucional em destaque */
@@ -337,20 +342,20 @@
             line-height: 1.7;
             color: var(--branco);
             border-left: 3px solid var(--ouro);
-            padding-left: 1.2rem;
-            margin-bottom: 2.2rem;
+            padding-left: 1.3rem;
+            margin-bottom: 2.6rem;
             font-style: italic;
         }
 
         .hero__acoes {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.1rem;
         }
 
         /* ---------- 06. Seções ---------- */
         .secao {
-            padding: 5.5rem 0;
+            padding: 7rem 0;
             border-top: 1px solid var(--borda);
         }
 
@@ -358,7 +363,7 @@
 
         .secao__cabecalho {
             max-width: 720px;
-            margin: 0 auto 3.2rem;
+            margin: 0 auto 3.8rem;
             text-align: center;
         }
 
@@ -374,7 +379,7 @@
 
         .secao__titulo {
             font-family: var(--fonte-titulo);
-            font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+            font-size: clamp(1.85rem, 3.4vw, 2.65rem);
             line-height: 1.15;
             letter-spacing: -0.015em;
             font-weight: 700;
@@ -406,6 +411,7 @@
             position: relative;
             overflow: hidden;
             border: 1px solid var(--borda);
+            border-radius: var(--raio);
             background: var(--grafite-claro);
             aspect-ratio: 4 / 3;
         }
@@ -458,6 +464,7 @@
         .pilar {
             background: var(--preto);
             border: 1px solid var(--borda);
+            border-radius: var(--raio-suave);
             padding: 1.5rem 1.6rem;
             margin-bottom: 1rem;
             transition: border-color var(--transicao), transform var(--transicao);
@@ -490,7 +497,8 @@
             position: relative;
             background: var(--grafite-claro);
             border: 1px solid var(--borda);
-            padding: 2.1rem 1.8rem;
+            border-radius: var(--raio);
+            padding: 2.2rem 1.9rem;
             display: flex;
             flex-direction: column;
             transition: transform var(--transicao), box-shadow var(--transicao),
@@ -501,7 +509,7 @@
         .card-servico::before {
             content: "";
             position: absolute;
-            inset: 0 0 auto 0;
+            inset: 0 1.2rem auto 1.2rem;
             height: 2px;
             background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.65), transparent);
             opacity: 0;
@@ -521,6 +529,7 @@
             height: 52px;
             display: grid;
             place-items: center;
+            border-radius: 12px;
             border: 1px solid rgba(201, 162, 39, 0.35);
             background: rgba(201, 162, 39, 0.07);
             color: var(--ouro-claro);
@@ -596,7 +605,8 @@
         .card-diferencial {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--borda);
-            padding: 1.9rem 1.7rem;
+            border-radius: var(--raio);
+            padding: 2rem 1.8rem;
             transition: transform var(--transicao), border-color var(--transicao),
                         background var(--transicao);
         }
@@ -632,6 +642,8 @@
         .faq details {
             background: var(--grafite-claro);
             border: 1px solid var(--borda);
+            border-radius: var(--raio-suave);
+            overflow: hidden;
             margin-bottom: 0.9rem;
             transition: border-color var(--transicao);
         }
@@ -707,7 +719,8 @@
         .formulario {
             background: var(--grafite-claro);
             border: 1px solid var(--borda);
-            padding: 2.4rem;
+            border-radius: var(--raio);
+            padding: 2.6rem;
             position: relative;
         }
 
@@ -740,6 +753,7 @@
             font-size: 0.92rem;
             padding: 0.8rem 0.9rem;
             margin-bottom: 1.2rem;
+            border-radius: 8px;
             transition: border-color 0.25s, box-shadow 0.25s;
         }
 
@@ -757,6 +771,7 @@
             align-items: flex-start;
             background: var(--preto);
             border: 1px solid var(--borda);
+            border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1.4rem;
         }
@@ -781,6 +796,7 @@
             display: none;
             position: absolute;
             inset: 0;
+            border-radius: var(--raio);
             background: var(--grafite-claro);
             z-index: 5;
             flex-direction: column;
@@ -812,15 +828,15 @@
         .rodape {
             background: #030303;
             border-top: 1px solid var(--borda);
-            padding: 4rem 0 0;
+            padding: 5rem 0 0;
             font-size: 0.9rem;
         }
 
         .rodape__grade {
             display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            gap: 2.5rem;
-            padding-bottom: 3rem;
+            grid-template-columns: 1.4fr 1fr 1.1fr;
+            gap: 3rem;
+            padding-bottom: 3.5rem;
         }
 
         .rodape__marca {
@@ -1053,7 +1069,7 @@
         }
 
         @media (max-width: 600px) {
-            .secao { padding: 4rem 0; }
+            .secao { padding: 4.5rem 0; }
 
             .servicos__grade,
             .diferenciais__grade,

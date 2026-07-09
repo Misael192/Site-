@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon SR Facilities — monograma SR dourado sobre fundo preto -->
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ouro" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C97A"/>
+      <stop offset="50%" stop-color="#C9A24B"/>
+      <stop offset="100%" stop-color="#A8853A"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0B0B0C"/>
+  <rect x="8" y="8" width="48" height="48" rx="10" fill="none" stroke="url(#ouro)" stroke-width="2.5"/>
+  <text x="32" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="url(#ouro)" text-anchor="middle" letter-spacing="1">SR</text>
+</svg>

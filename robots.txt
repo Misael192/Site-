@@ -1,0 +1,5 @@
+# SR Facilities — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.srfacilities.com.br/sitemap.xml

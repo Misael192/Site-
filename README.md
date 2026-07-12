@@ -26,18 +26,18 @@ pages/
   termos-de-uso.html
   declaracao-de-acessibilidade.html
 img/                        Imagens do site
-favicon/favicon.svg         Escudo SR (favicon e logo)
+favicon/                    Favicon e ícone de toque (escudo SR oficial)
 ```
 
 ## Formulário de contato (PHP)
 
 O formulário de `pages/contato.html` envia via POST para `enviar-email.php`,
 que valida os campos, aplica proteção anti-spam (honeypot) e envia o e-mail
-para `contato@srfacilities.com.br` com a função `mail()` do PHP.
+para `srfacilitiesservicos@gmail.com` com a função `mail()` do PHP.
 
 - **Hospedagem com PHP** (Hostinger, HostGator, Locaweb etc.): funciona sem configuração.
 - **Hospedagem estática** (GitHub Pages, Netlify): PHP não roda. Troque o `action`
-  do formulário por `https://formsubmit.co/contato@srfacilities.com.br`.
+  do formulário por `https://formsubmit.co/srfacilitiesservicos@gmail.com`.
 - **PHPMailer/SMTP**: instruções de migração comentadas no topo de `enviar-email.php`.
 
 ## Pendências de conteúdo

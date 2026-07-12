@@ -13,7 +13,7 @@
  *   (Hostinger, HostGator, Locaweb, KingHost etc.).
  * - Em hospedagem estática (GitHub Pages, Netlify) o PHP não
  *   roda; nesse caso use FormSubmit apontando o action do
- *   formulário para https://formsubmit.co/contato@srfacilities.com.br
+ *   formulário para https://formsubmit.co/srfacilitiesservicos@gmail.com
  *
  * MIGRAÇÃO FUTURA PARA PHPMAILER (envio via SMTP autenticado)
  * - composer require phpmailer/phpmailer
@@ -24,7 +24,7 @@
 declare(strict_types=1);
 
 /* ---------- Configurações ---------- */
-const EMAIL_DESTINO  = 'contato@srfacilities.com.br';
+const EMAIL_DESTINO  = 'srfacilitiesservicos@gmail.com';
 const PAGINA_RETORNO = 'pages/contato.html';
 
 /* ---------- Aceita somente POST ---------- */

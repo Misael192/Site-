@@ -1,0 +1,22 @@
+/* ==========================================================
+   SR FACILITIES — FONTE DO TAILWIND CSS
+   Compilar com:
+   npx @tailwindcss/cli -i css/tailwind-input.css -o css/tailwind.css --minify
+   (executar na raiz do projeto para que as classes de
+   index.html sejam detectadas automaticamente)
+   ========================================================== */
+@import "tailwindcss";
+
+@source "../index.html";
+
+@theme {
+    /* Paleta oficial da SR Facilities */
+    --color-primary: #d4af37;        /* Dourado principal */
+    --color-primary-dark: #aa8c2c;   /* Dourado escuro (hover) */
+    --color-primary-deep: #8F6E14;   /* Dourado profundo (texto sobre fundo claro, contraste AA) */
+    --color-carbon: #050505;         /* Preto da marca */
+    --color-graphite: #14161b;       /* Grafite */
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+}

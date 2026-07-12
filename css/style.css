@@ -35,7 +35,7 @@
     --raio-suave: 10px;
     --sombra-ouro: 0 10px 30px rgba(201, 162, 39, 0.25);
     --transicao: 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
-    --fonte-titulo: 'Playfair Display', Georgia, serif;
+    --fonte-titulo: 'Manrope', 'Inter', system-ui, sans-serif;
     --fonte-texto: 'Inter', system-ui, -apple-system, sans-serif;
 }
 

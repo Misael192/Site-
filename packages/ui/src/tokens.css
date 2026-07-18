@@ -1,0 +1,85 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Flow UI — Design Tokens (doc 13 §2)
+ *
+ * Fonte única de tokens semânticos. Componentes NUNCA usam cor crua —
+ * apenas as variáveis abaixo. Temas claro/escuro são de primeira classe:
+ * o tema troca via [data-theme] no <html>.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Brand */
+  --pf-brand-50: #eef2ff;
+  --pf-brand-100: #e0e7ff;
+  --pf-brand-300: #a5b4fc;
+  --pf-brand-500: #6366f1;
+  --pf-brand-600: #4f46e5;
+  --pf-brand-700: #4338ca;
+  --pf-accent-500: #14b8a6;
+
+  /* Semantic */
+  --pf-success: #16a34a;
+  --pf-warning: #d97706;
+  --pf-danger: #dc2626;
+  --pf-info: #0284c7;
+
+  /* Surfaces — light */
+  --pf-bg: #fafafa;
+  --pf-surface: #ffffff;
+  --pf-surface-elevated: #ffffff;
+  --pf-overlay: rgb(0 0 0 / 0.45);
+  --pf-border: #e4e4e7;
+  --pf-border-strong: #d4d4d8;
+
+  /* Texto */
+  --pf-text: #18181b;
+  --pf-text-muted: #52525b;
+  --pf-text-subtle: #a1a1aa;
+  --pf-text-on-brand: #ffffff;
+
+  /* Raios (doc 13 §2) */
+  --pf-radius-sm: 6px;
+  --pf-radius-md: 10px;
+  --pf-radius-lg: 16px;
+
+  /* Elevação */
+  --pf-shadow-1: 0 1px 2px rgb(0 0 0 / 0.05);
+  --pf-shadow-2: 0 2px 8px rgb(0 0 0 / 0.08);
+  --pf-shadow-3: 0 8px 24px rgb(0 0 0 / 0.12);
+
+  /* Motion (doc 13 §3) */
+  --pf-duration-micro: 120ms;
+  --pf-duration-base: 200ms;
+  --pf-duration-page: 300ms;
+  --pf-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --pf-ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+[data-theme="dark"] {
+  /* Surfaces — dark: mapa próprio de elevação, não filtro invertido (doc 13 §5) */
+  --pf-bg: #0b0b0f;
+  --pf-surface: #131318;
+  --pf-surface-elevated: #1b1b22;
+  --pf-overlay: rgb(0 0 0 / 0.6);
+  --pf-border: #26262e;
+  --pf-border-strong: #34343e;
+
+  --pf-text: #f4f4f5;
+  --pf-text-muted: #a1a1aa;
+  --pf-text-subtle: #63636b;
+
+  --pf-brand-500: #818cf8;
+  --pf-brand-600: #6366f1;
+  --pf-brand-700: #4f46e5;
+
+  --pf-shadow-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --pf-shadow-2: 0 2px 8px rgb(0 0 0 / 0.5);
+  --pf-shadow-3: 0 8px 24px rgb(0 0 0 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --pf-duration-micro: 0ms;
+    --pf-duration-base: 0ms;
+    --pf-duration-page: 0ms;
+  }
+}

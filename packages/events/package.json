@@ -1,0 +1,19 @@
+{
+  "name": "@peopleflow/events",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contratos de eventos de domínio da plataforma (doc 06)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "uuid": "^11.0.0"
+  },
+  "devDependencies": {
+    "@peopleflow/config": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}

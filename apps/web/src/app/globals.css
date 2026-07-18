@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "@peopleflow/ui/tokens.css";
+
+/* Flow UI é fonte TSX fora do app — o Tailwind precisa escanear o pacote */
+@source "../../../../packages/ui/src";
+
+html,
+body {
+  background: var(--pf-bg);
+  color: var(--pf-text);
+  min-height: 100%;
+}
+
+/* Anel de foco padrão do Design System (acessibilidade — doc 13 §4) */
+.pf-focus:focus-visible {
+  outline: 2px solid var(--pf-brand-500);
+  outline-offset: 2px;
+}

@@ -1,22 +1,118 @@
 /* ==========================================================
-   SR FACILITIES — FONTE DO TAILWIND CSS
-   Compilar com:
+   SR FACILITIES — FONTE ÚNICA DE ESTILOS (TAILWIND CSS v4)
+
+   Compilar (na raiz do projeto):
    npx @tailwindcss/cli -i css/tailwind-input.css -o css/tailwind.css --minify
-   (executar na raiz do projeto para que as classes de
-   index.html sejam detectadas automaticamente)
+
+   Todo o layout, espaçamento, tipografia, grids e
+   responsividade vivem nas classes utilitárias do HTML.
+   Este arquivo contém apenas:
+   01. Tema (variáveis da marca)
+   02. Componentes reutilizáveis (botões)
+   03. Tipografia das páginas legais (componente .texto-legal)
+   04. Animações específicas (scroll reveal)
+   05. Acessibilidade global (foco visível)
    ========================================================== */
 @import "tailwindcss";
 
 @source "../index.html";
+@source "../pages";
 
+/* ---------- 01. Tema: identidade da SR Facilities ---------- */
 @theme {
-    /* Paleta oficial da SR Facilities */
-    --color-primary: #d4af37;        /* Dourado principal */
-    --color-primary-dark: #aa8c2c;   /* Dourado escuro (hover) */
-    --color-primary-deep: #8F6E14;   /* Dourado profundo (texto sobre fundo claro, contraste AA) */
+    /* Paleta oficial: preto, branco e dourado */
+    --color-primary: #D4AF37;        /* Dourado principal */
+    --color-primary-dark: #AA8C2C;   /* Dourado escuro (hover) */
+    --color-primary-deep: #8F6E14;   /* Dourado profundo (texto em fundo claro, contraste AA) */
     --color-carbon: #050505;         /* Preto da marca */
-    --color-graphite: #14161b;       /* Grafite */
+    --color-graphite: #14161B;       /* Grafite (seções escuras) */
+    --color-graphite-2: #1C1F26;     /* Grafite claro (cards escuros) */
 
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
+}
+
+/* ---------- 02. Componentes reutilizáveis ---------- */
+@layer components {
+    /* Botão dourado (ação principal) */
+    .btn-ouro {
+        @apply inline-flex cursor-pointer items-center justify-center gap-2
+               rounded-xl border-0 bg-gradient-to-br from-[#EBD27A] via-primary to-primary-deep
+               px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em]
+               text-neutral-950 no-underline shadow-lg shadow-primary/20
+               transition duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30;
+    }
+
+    /* Botão de contorno (ação secundária, fundos escuros) */
+    .btn-contorno {
+        @apply inline-flex cursor-pointer items-center justify-center gap-2
+               rounded-xl border border-white/25 bg-transparent
+               px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em]
+               text-white no-underline transition duration-300
+               hover:-translate-y-0.5 hover:border-primary hover:text-primary;
+    }
+
+    /* Campos de formulário */
+    .rotulo {
+        @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-neutral-400;
+    }
+    .campo {
+        @apply mb-5 w-full rounded-lg border border-white/10 bg-carbon px-3.5 py-3
+               text-sm text-white outline-none transition
+               focus:border-primary focus:ring-2 focus:ring-primary/20;
+    }
+
+    /* ---------- 03. Tipografia das páginas legais ----------
+       Componente único para o conteúdo corrido de Privacidade,
+       Cookies, Termos e Acessibilidade (evita repetir classes
+       em cada parágrafo). Construído com utilitários Tailwind. */
+    .texto-legal h2 {
+        @apply mt-10 mb-3 font-display text-xl font-bold text-primary;
+    }
+    .texto-legal .atualizacao {
+        @apply mb-9 text-sm text-neutral-500;
+    }
+    .texto-legal p,
+    .texto-legal li {
+        @apply mb-4 text-[0.98rem] font-light leading-relaxed text-neutral-300;
+    }
+    .texto-legal strong { @apply font-semibold text-white; }
+    .texto-legal ul { @apply list-disc pl-5; }
+    .texto-legal li { @apply mb-2; }
+    .texto-legal a { @apply text-primary underline-offset-2 hover:underline; }
+    .texto-legal .destaque {
+        @apply my-8 rounded-2xl border border-white/10 border-l-2 border-l-primary
+               bg-graphite-2 px-6 py-5;
+    }
+}
+
+/* ---------- 04. Animações específicas: scroll reveal ----------
+   Estados aplicados pelo js/scroll.js (Intersection Observer). */
+.revelar {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+    transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.revelar--visivel {
+    opacity: 1;
+    transform: none;
+}
+
+/* Usuários que preferem menos movimento: sem animações */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    .revelar { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation: none !important;
+    }
+}
+
+/* ---------- 05. Acessibilidade: foco visível global ---------- */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
 }

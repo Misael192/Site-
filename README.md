@@ -1,7 +1,28 @@
 # SR Facilities — Site Institucional
 
 Site institucional premium da **SR Facilities** (facilities e serviços terceirizados),
-desenvolvido em HTML5, CSS3 e JavaScript puro.
+desenvolvido em HTML5, **Tailwind CSS** e JavaScript puro.
+
+## Estilização
+
+O projeto usa **exclusivamente Tailwind CSS** — não há CSS de layout escrito à mão.
+Todo o layout, espaçamento, tipografia, grids e responsividade vivem nas classes
+utilitárias do HTML.
+
+- `css/tailwind-input.css` — **fonte** dos estilos: tema com as variáveis da marca
+  (preto, branco, dourado `#D4AF37`), componentes reutilizáveis (`.btn-ouro`,
+  `.btn-contorno`, `.campo`, `.rotulo`, `.texto-legal`), a animação de scroll reveal
+  (`.revelar`) e o foco visível de acessibilidade.
+- `css/tailwind.css` — **CSS compilado e minificado** (é o arquivo carregado pelas páginas).
+
+### Recompilar o CSS após editar classes
+
+```
+npx @tailwindcss/cli -i css/tailwind-input.css -o css/tailwind.css --minify
+```
+
+Rode na raiz do projeto para que as classes de `index.html` e `pages/` sejam
+detectadas automaticamente pelos `@source`.
 
 ## Estrutura
 
@@ -11,9 +32,8 @@ enviar-email.php            Processador do formulário de contato (PHP)
 sitemap.xml                 Mapa do site para buscadores
 robots.txt                  Instruções para robôs de busca
 css/
-  style.css                 Estilos principais
-  responsive.css            Responsividade (tablet e celular)
-  animations.css            Animações de entrada (scroll reveal)
+  tailwind-input.css        Fonte: tema + componentes (editar aqui)
+  tailwind.css              CSS compilado e minificado (carregado pelas páginas)
 js/
   script.js                 Ano automático, banner de cookies, feedback do formulário
   menu.js                   Cabeçalho fixo com efeito ao rolar + menu mobile
@@ -42,5 +62,4 @@ para `srfacilitiesservicos@gmail.com` com a função `mail()` do PHP.
 
 ## Pendências de conteúdo
 
-- Foto oficial de **Jardinagem** para a galeria (usa imagem provisória).
 - Links de **LinkedIn** e **Facebook** no rodapé (Instagram já configurado).
